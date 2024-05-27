@@ -27,7 +27,7 @@ submit_button = st.button("Ask")
 if submit_button and user_input:
   response = get_gemini_response(user_input)
   
-  st.subheader("Response:")
+  st.subheader("Dialogosaur:")
   for chunk in response:
     st.write(chunk.text)
     st.session_state['chat_history'].append(("Dialogosaur: ", chunk.text))
@@ -36,7 +36,7 @@ if submit_button and user_input:
 if 'chat_history' not in st.session_state:
   st.session_state['chat_history'] = []
 
-st.subheader("Chat History:")
+st.subheader("Response History:")
 for role, text in st.session_state['chat_history']:
   st.write(f"{role}:{text}")
 
