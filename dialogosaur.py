@@ -1,41 +1,22 @@
-from dotenv import load_dotenv
-load_dotenv()
-
-import streamlit as st
-import os
 import google.generativeai as genai
 
-api_key = os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+API_KEY = 'AIzaSyDjJ0JSkAmSzN6kYRdVgdjqkniNa8Fsy9k'
 
-## loads Gemini and get response
-model=genai.GenerativeModel("gemini-pro")
-chat=model.start_chat(history=[])
+genai.configure(
+    api_key = API_KEY
+)
 
-def get_gemini_response(question):
-    response=chat.send_message(question, stream=True)
+model = genai.GenerativeModel('gemini-pro')
+chat = model.start_chat(history=[])
+instruction = "Respond as if you're explaining things to a ten-year-old kid"
 
-##initialize streamlit
-st.set_page_config(page_title="Q&A Demo")
-st.header("Ask Dialogosaur!")
+while (True):
+  question = input("You: ")
 
-##initialize sesh state for chat history if it doesn't exist
-if 'chat_history' not in st.session_state:
-    st.session_state['chat_history']=[]
+  if(question.strip() == ''):
+    break
 
-input = st.text_input("Input: ", key="input")
-submit=st.button("Send")
-
-if submit and input:
-    response=get_gemini_response(input)
-
-    ## add user query and response to sesh chat history
-    st.session_state['chat_history'].append(("You: ", input))
-    st.subheader("Dialogosaur: ")
-    for chunk in response:
-        st.write(chunk.text)
-        st.session_state['chat_history'].append(("Dialogosaur: ", chunk.text))
-st.subheader("[Chat History]")
-
-for role, text in st.session_state['chat_history']:
-    st.write(f"{role}:{text}")
+  response = chat.send_message(instruction + question)
+  print(f"Dialogosaur: {response.text}")
+  print('\n')
+  instruction = ''
