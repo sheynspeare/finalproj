@@ -20,7 +20,6 @@ def get_gemini_response(question):
 # Streamlit App Interface
 st.set_page_config(page_title="Chatbot Demo")
 st.header("ASK DIALAGOSAUR!")
-st.description("Submitted by Shayne B. Yanson BSCS 3B")
 
 user_input = st.text_input("Ask a question: ")
 submit_button = st.button("Ask")
