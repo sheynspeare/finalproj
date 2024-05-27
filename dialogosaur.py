@@ -34,7 +34,7 @@ if submit and input:
     for chunk in response:
         st.write(chunk.text)
         st.session_state['chat_history'].append(("Dialogosaur: ", chunk.text))
-st.subheader("/n-------------------/n  The Chat history is")
+st.subheader("[Chat History]")
 
 for role, text in st.session_state['chat_history']:
     st.write(f"{role}:{text}")
