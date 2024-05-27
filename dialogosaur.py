@@ -18,7 +18,7 @@ def get_gemini_response(question):
   return response
 
 # Streamlit App Interface
-st.set_page_config(page_title="Chatbot Demo")
+st.set_page_config(page_title="🦖 DIALAGOSAUR")
 st.header("🦖 ASK DIALAGOSAUR!")
 st.subheader("Submitted by: Shayne B. Yanson BSCS 3B")
 
