@@ -21,7 +21,10 @@ def get_gemini_response(question):
 st.set_page_config(page_title="Chatbot Demo")
 st.header("ASK DIALAGOSAUR!")
 
-user_input = st.text_input("Ask a question: ")
+ print("Submitted by: Shayne B. Yanson BSCS 3B")
+ print('\n')
+
+user_input = st.text_input("Enter your query: ")
 submit_button = st.button("Ask")
 
 if submit_button and user_input:
