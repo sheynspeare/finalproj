@@ -30,7 +30,7 @@ if submit and input:
 
     ## add user query and response to sesh chat history
     st.session_state['chat_history'].append(("You: ", input))
-    st.level4("Dialogosaur: ")
+    st.subheader("Dialogosaur: ")
     for chunk in response:
         st.write(chunk.text)
         st.session_state['chat_history'].append(("Dialogosaur: ", chunk.text))
